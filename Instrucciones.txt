@@ -1,0 +1,39 @@
+El diseño se trata de un código tipo "ficha de personaje".
+Será esencialmente un flex columnar mezclando SVG y código, y se dividirá en cuatro "secciones" principales.
+Frame 1, Frame 2, Frame 3, Frame 4
+Para acceder a los SVG, te preparé la carpeta "SVG" dentro de la carpeta que vamos a trabajar. Una con los SVG en blanco (subcarpeta Blanco), y otra con los SVG en rojo (subcarpeta Rojo).
+El ancho total de la "ficha" como tal es de 720px.
+Te dejé la fuente que voy a usar en la carpeta Fuentes.
+
+Colores para las variables:
+Base: #1F0506
+Primario: #D81F38
+Secundario: #38050C
+Blanco : #fff
+Son los únicos colores que voy a usar.
+
+
+Sección 1:
+Vas a usar el SVG Frame 1. Este SVG tiene un espacio en el medio para una imagen. Coloca una caja por debajo del SVG que mas o menos se centre en el SVG. Yo después la acomodo si no podés calcular las dimensiones, pero idealmente que flote por debajo del SVG y en el centro.
+
+Sección 2
+La sección 2 no tiene un frame, sino "esquinas". Para las esquinas superiores vas a usar "Frame 2 - Esquina superior izquierda". Para las esquinas inferiores vas a usar "Frame 2 - Esquina inferior izquierda". Para las de la derecha espeja el mismo SVG nomas. La idea es que las esquinas se adapten al contenido.
+En la sección 2, el contenido es el título "Datos basicos" en uppercase y debajo el frame Frame 2 - Separador a modo de "subrayado" o separador de título.
+Abajo las cajitas de atributos son basicamente una caja flex de color Primario con el mismo ancho del SVG separador debajo del título; esta caja tiene un gap y padding de 2px. Dentro de este modulo repetido de atributo-valor, hay dos cajas con bordes redondeados. La primera es de color Secundario, y la segunda es de color Base. La primera se adapta al ancho del texto, y la segunda cede por flex al resto del ancho. Dentro, el texto es color Primario.
+
+Sección 3
+Título Bitacora en uppercase. Debajo el SVG Frame 3 que va a servir como cajita para guardar texto. Los títulos dentro de esta caja van a estar en una caja color Primario alineada al centro. Esta caja es un flex que contiene 3 cajas. Las cajas de los extremos son cajas diminutas de color Base con los bordes orientados al centro (la primera bordes derechos, la segunda bordes izquierdos) ligeramente redondeados. La caja del medio es una caja de color Secundario con los bordes ligeramente redondeados. El texto interno color primario. Aca busco dar un efecto especial a la caja tipo "columnas con forma de I" usando el método explicado.
+
+Sección 4
+La sección 4 es una caja sencilla color Secundario y borde de 2px color Primario. Usarás de esquinas los SVG llamados Frame 4 - Esquina superior izquierda, haciendo los translates necesarios para cada esquina respectiva. Las esquinas deben estar alineadas completamente con el borde de 2px. En el interior de la caja van a haber renglones tipo FECHA-SUCESO. La fecha va a tener un border block de 2px color Primario. El texto siempre va a ser color Primario. Para cada renglon idealmente usa un display grid con dos columnas y una fila para que la fecha siempre quede alineada arriba y el texto no se vaya por debajo de la fecha, sino que continúe por debajo de si mismo.
+
+ANIMACIONES:
+En la carpeta llamada "Ficha vieja" hay un intento anterior de hacer esta ficha. Quiero que copies los siguientes efectos de esa ficha:
+
+- Hay partículas levitando alrededor de todo el diseño. En tu mensaje de respuesta quiero que me digas con precisión si crees que costará mucho recurso mantener las chispitas para que corran en todos los ordenadores. De momento las mantenemos, pero segun que me respondas, quizás las quite.
+
+- Al hacer hover sobre la ficha, queda un efecto permanente de cambio de color:
+>En el primer estado, usarías los SVG en la carpeta SVG>Blanco con un glow tipo neon rojo (como en la ficha vieja, mismo efecto exacto, aunque no recuerdo si usé el mismo rojo antes que ahora; si lo ves necesario, adapta el efecto neon para que se parezca más a mi Primario). Todo lo que normalmente es color Primario, en esta ficha es Blanco.
+> En el segundo estado, se revela una "segunda capa" con los SVG en la carpeta SVG>Rojo. Lo blanco pasa a ser Primario.
+Para evitar consumir recursos, haz que el contenido de texto de las capas (excepto los títulos) sea modular, para no clonar todo.
+El efecto como tal, como bien dije, está en mi proyecto de la carpeta Ficha vieja. Imitalo y comentame si lo vas a pulir o si lo ves bien.
