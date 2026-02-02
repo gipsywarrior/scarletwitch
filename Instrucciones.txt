@@ -37,3 +37,5 @@ En la carpeta llamada "Ficha vieja" hay un intento anterior de hacer esta ficha.
 > En el segundo estado, se revela una "segunda capa" con los SVG en la carpeta SVG>Rojo. Lo blanco pasa a ser Primario.
 Para evitar consumir recursos, haz que el contenido de texto de las capas (excepto los títulos) sea modular, para no clonar todo.
 El efecto como tal, como bien dije, está en mi proyecto de la carpeta Ficha vieja. Imitalo y comentame si lo vas a pulir o si lo ves bien.
+
+En el PNG llamado "Guía Visual" tenes una imagen que te muestra como debe lucir el proyecto más o menos (mi diseño de Figma).

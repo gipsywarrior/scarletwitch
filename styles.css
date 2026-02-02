@@ -1,0 +1,545 @@
+/* ================================ */
+/* FUENTES Y VARIABLES              */
+/* ================================ */
+
+@font-face {
+    font-family: 'PangSerif';
+    src: url('Fuentes/PangSerif-Regular10.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    --base: #1F0506;
+    --primario: #D81F38;
+    --secundario: #38050C;
+    --blanco: #fff;
+    --ancho-ficha: 720px;
+}
+
+/* ================================ */
+/* RESET Y BASE                     */
+/* ================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 20px;
+    background-color: #0a0a0a;
+    font-family: 'PangSerif', Georgia, serif;
+}
+
+/* ================================ */
+/* CONTENEDOR PRINCIPAL             */
+/* ================================ */
+
+.ficha-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.ficha {
+    width: var(--ancho-ficha);
+    position: relative;
+    background-color: var(--base);
+    cursor: pointer;
+    overflow: hidden;
+}
+
+/* ================================ */
+/* SISTEMA DE CAPAS                 */
+/* ================================ */
+
+.capa {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.capa-blanca {
+    position: relative;
+    z-index: 2;
+    opacity: 1;
+    transition: opacity 0.8s ease-out;
+}
+
+.capa-blanca .titulo-seccion,
+.capa-blanca .atributo-label,
+.capa-blanca .atributo-value,
+.capa-blanca .titulo-centro,
+.capa-blanca .cronologia-fecha,
+.capa-blanca .cronologia-suceso {
+    color: var(--blanco);
+}
+
+.capa-blanca .frame1-svg,
+.capa-blanca .frame3-svg,
+.capa-blanca .esquina,
+.capa-blanca .separador,
+.capa-blanca .esquina4 {
+    animation: neonPulse 3s ease-in-out infinite;
+}
+
+.capa-roja {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    clip-path: circle(0% at 50% 50%);
+    transition: clip-path 0s;
+}
+
+.capa-roja .titulo-seccion,
+.capa-roja .atributo-label,
+.capa-roja .atributo-value,
+.capa-roja .titulo-centro,
+.capa-roja .cronologia-fecha,
+.capa-roja .cronologia-suceso {
+    color: var(--primario);
+}
+
+/* ================================ */
+/* EFECTO NEON                      */
+/* ================================ */
+
+@keyframes neonPulse {
+    0%, 100% {
+        filter: drop-shadow(0 0 6px #D81F38) drop-shadow(0 0 15px #D81F38);
+    }
+    50% {
+        filter: drop-shadow(0 0 12px #D81F38) drop-shadow(0 0 30px #a0152a);
+    }
+}
+
+/* ================================ */
+/* ESTADOS DE HOVER Y TRANSMUTACION */
+/* ================================ */
+
+.ficha:hover .capa-blanca,
+.ficha.transmuted .capa-blanca {
+    opacity: 0;
+    transition: opacity 1s ease-out 0.3s;
+}
+
+.ficha:hover .capa-roja,
+.ficha.transmuted .capa-roja {
+    clip-path: circle(100% at 50% 50%);
+    transition: clip-path 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ================================ */
+/* ANILLO MAGICO                    */
+/* ================================ */
+
+.magic-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.ficha:hover .magic-ring {
+    width: 150%;
+    height: 150%;
+    border-color: rgba(216, 31, 56, 0.7);
+    opacity: 1;
+    box-shadow:
+        0 0 25px rgba(216, 31, 56, 0.5),
+        inset 0 0 15px rgba(216, 31, 56, 0.2);
+    transition:
+        width 1s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        height 1s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        opacity 0.2s ease-out,
+        border-color 0.3s ease-out,
+        box-shadow 0.5s ease-out;
+    animation: ringFade 1.3s ease-out forwards;
+}
+
+.ficha.transmuted .magic-ring {
+    display: none;
+}
+
+@keyframes ringFade {
+    0% { opacity: 0; }
+    15% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* ================================ */
+/* SECCION 1: FRAME PRINCIPAL       */
+/* ================================ */
+
+.seccion-1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.frame1-container {
+    position: relative;
+    width: 674px;
+    height: 662px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.frame1-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.imagen-personaje {
+    position: absolute;
+    width: 280px;
+    height: 340px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    overflow: hidden;
+}
+
+.imagen-personaje img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ================================ */
+/* SECCION 2: DATOS BASICOS         */
+/* ================================ */
+
+.seccion-2 {
+    display: flex;
+    justify-content: center;
+    padding: 30px 20px;
+}
+
+.seccion2-content {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    padding: 50px 30px;
+}
+
+/* Esquinas Seccion 2 */
+.esquina {
+    position: absolute;
+    width: 80px;
+    height: auto;
+}
+
+.esquina-sup-izq {
+    top: 0;
+    left: 0;
+}
+
+.esquina-sup-der {
+    top: 0;
+    right: 0;
+    transform: scaleX(-1);
+}
+
+.esquina-inf-izq {
+    bottom: 0;
+    left: 0;
+}
+
+.esquina-inf-der {
+    bottom: 0;
+    right: 0;
+    transform: scaleX(-1);
+}
+
+.seccion2-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.titulo-seccion {
+    font-size: 32px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-weight: normal;
+}
+
+.separador {
+    width: 509px;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Atributos */
+.atributos-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    width: 509px;
+    max-width: 100%;
+    background-color: var(--primario);
+    padding: 2px;
+    margin-top: 10px;
+}
+
+.atributo-row {
+    display: flex;
+    gap: 2px;
+}
+
+.atributo-label {
+    background-color: var(--secundario);
+    padding: 8px 12px;
+    border-radius: 3px;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.atributo-value {
+    background-color: var(--base);
+    padding: 8px 12px;
+    border-radius: 3px;
+    font-size: 14px;
+    flex: 1;
+}
+
+/* ================================ */
+/* SECCION 3: BITACORA              */
+/* ================================ */
+
+.seccion-3 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 20px;
+}
+
+.titulo-bitacora {
+    margin-bottom: 15px;
+}
+
+.frame3-container {
+    position: relative;
+    width: 671px;
+    max-width: 100%;
+}
+
+.frame3-svg {
+    width: 100%;
+    height: auto;
+}
+
+.bitacora-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Titulo interno bitacora con efecto columnas I */
+.bitacora-titulo-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primario);
+    padding: 2px;
+    border-radius: 4px;
+}
+
+.titulo-esquina-izq,
+.titulo-esquina-der {
+    width: 8px;
+    height: 30px;
+    background-color: var(--base);
+}
+
+.titulo-esquina-izq {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.titulo-esquina-der {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.titulo-centro {
+    background-color: var(--secundario);
+    padding: 8px 20px;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* ================================ */
+/* SECCION 4: CRONOLOGIA            */
+/* ================================ */
+
+.seccion-4 {
+    display: flex;
+    justify-content: center;
+    padding: 30px 20px 50px;
+}
+
+.cronologia-box {
+    position: relative;
+    width: 600px;
+    max-width: 100%;
+    background-color: var(--secundario);
+    border: 2px solid var(--primario);
+    padding: 40px 30px;
+}
+
+/* Esquinas Frame 4 */
+.esquina4 {
+    position: absolute;
+    width: 100px;
+    height: auto;
+}
+
+.esquina4-sup-izq {
+    top: -2px;
+    left: -2px;
+}
+
+.esquina4-sup-der {
+    top: -2px;
+    right: -2px;
+    transform: scaleX(-1);
+}
+
+.esquina4-inf-izq {
+    bottom: -2px;
+    left: -2px;
+    transform: scaleY(-1);
+}
+
+.esquina4-inf-der {
+    bottom: -2px;
+    right: -2px;
+    transform: scale(-1, -1);
+}
+
+.cronologia-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.cronologia-row {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 15px;
+    padding: 10px 0;
+}
+
+.cronologia-fecha {
+    font-size: 12px;
+    border-top: 2px solid var(--primario);
+    border-bottom: 2px solid var(--primario);
+    padding: 5px 10px;
+    white-space: nowrap;
+    align-self: start;
+}
+
+.cronologia-suceso {
+    font-size: 14px;
+    line-height: 1.5;
+    padding-top: 5px;
+}
+
+/* ================================ */
+/* PARTICULAS MAGICAS               */
+/* ================================ */
+
+.magic-particle {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    background: radial-gradient(circle at 50% 50%,
+        #ffffff 0%,
+        #ffffff 30%,
+        #D81F38 50%,
+        #a0152a 70%,
+        transparent 100%);
+    box-shadow:
+        0 0 4px #D81F38,
+        0 0 8px #a0152a,
+        0 0 12px rgba(168, 21, 42, 0.5);
+    z-index: 100;
+}
+
+.magic-particle.transition-burst {
+    animation-duration: 1.5s !important;
+    animation-timing-function: ease-out !important;
+}
+
+/* ================================ */
+/* RESPONSIVE                       */
+/* ================================ */
+
+@media (max-width: 750px) {
+    .ficha {
+        width: 100%;
+    }
+
+    .frame1-container {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 674 / 662;
+    }
+
+    .imagen-personaje {
+        width: 40%;
+        height: auto;
+        aspect-ratio: 280 / 340;
+    }
+
+    .seccion2-content {
+        padding: 40px 20px;
+    }
+
+    .esquina {
+        width: 60px;
+    }
+
+    .titulo-seccion {
+        font-size: 24px;
+    }
+
+    .cronologia-box {
+        padding: 30px 20px;
+    }
+
+    .esquina4 {
+        width: 70px;
+    }
+}
