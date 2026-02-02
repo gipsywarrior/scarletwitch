@@ -8,234 +8,135 @@
 </head>
 <body>
     <div class="ficha-container">
-        <div class="ficha">
-            <!-- CAPA BLANCA (Estado inicial con neon) -->
-            <div class="capa capa-blanca">
-                <!-- Seccion 1: Frame principal con imagen -->
-                <section class="seccion seccion-1">
-                    <div class="frame1-container">
-                        <div class="imagen-personaje">
-                            <img src="https://placehold.co/280x340/purple/D81F38?text=IMAGEN" alt="Imagen del personaje">
-                        </div>
-                        <img src="SVG/Blanco/Frame 1.svg" alt="Frame 1" class="frame1-svg">
+        <div class="ficha" id="ficha">
+            <!-- Seccion 1: Frame principal con imagen -->
+            <section class="seccion seccion-1">
+                <div class="frame1-container">
+                    <div class="imagen-personaje">
+                        <img src="https://placehold.co/280x340/1F0506/D81F38?text=IMAGEN" alt="Imagen del personaje">
                     </div>
-                </section>
+                    <img src="SVG/Blanco/Frame 1.svg" alt="Frame 1" class="frame1-svg svg-blanco">
+                    <img src="SVG/Rojo/Frame 1.svg" alt="Frame 1" class="frame1-svg svg-rojo">
+                </div>
+            </section>
 
-                <!-- Seccion 2: Datos Basicos -->
-                <section class="seccion seccion-2">
-                    <div class="seccion2-content">
-                        <!-- Esquinas -->
-                        <img src="SVG/Blanco/Frame 2 - Esquina superior izquierda.svg" class="esquina esquina-sup-izq" alt="">
-                        <img src="SVG/Blanco/Frame 2 - Esquina superior izquierda.svg" class="esquina esquina-sup-der" alt="">
-                        <img src="SVG/Blanco/Frame 2 - Esquina inferior izquierda.svg" class="esquina esquina-inf-izq" alt="">
-                        <img src="SVG/Blanco/Frame 2 - Esquina inferior izquierda.svg" class="esquina esquina-inf-der" alt="">
+            <!-- Seccion 2: Datos Basicos -->
+            <section class="seccion seccion-2">
+                <div class="seccion2-content">
+                    <!-- Esquinas Blancas -->
+                    <img src="SVG/Blanco/Frame 2 - Esquina superior izquierda.svg" class="esquina esquina-sup-izq svg-blanco" alt="">
+                    <img src="SVG/Blanco/Frame 2 - Esquina superior izquierda.svg" class="esquina esquina-sup-der svg-blanco" alt="">
+                    <img src="SVG/Blanco/Frame 2 - Esquina inferior izquierda.svg" class="esquina esquina-inf-izq svg-blanco" alt="">
+                    <img src="SVG/Blanco/Frame 2 - Esquina inferior izquierda.svg" class="esquina esquina-inf-der svg-blanco" alt="">
+                    <!-- Esquinas Rojas -->
+                    <img src="SVG/Rojo/Frame 2 - Esquina superior izquierda.svg" class="esquina esquina-sup-izq svg-rojo" alt="">
+                    <img src="SVG/Rojo/Frame 2 - Esquina superior izquierda.svg" class="esquina esquina-sup-der svg-rojo" alt="">
+                    <img src="SVG/Rojo/Frame 2 - Esquina inferior izquierda.svg" class="esquina esquina-inf-izq svg-rojo" alt="">
+                    <img src="SVG/Rojo/Frame 2 - Esquina inferior izquierda.svg" class="esquina esquina-inf-der svg-rojo" alt="">
 
-                        <!-- Contenido -->
-                        <div class="seccion2-inner">
-                            <h2 class="titulo-seccion">DATOS BASICOS</h2>
-                            <img src="SVG/Blanco/Frame 2 - Separador.svg" class="separador" alt="">
+                    <!-- Contenido -->
+                    <div class="seccion2-inner">
+                        <h2 class="titulo-seccion">DATOS BASICOS</h2>
+                        <div class="separador-container">
+                            <img src="SVG/Blanco/Frame 2 - Separador.svg" class="separador svg-blanco" alt="">
+                            <img src="SVG/Rojo/Frame 2 - Separador.svg" class="separador svg-rojo" alt="">
+                        </div>
 
-                            <div class="atributos-container">
-                                <div class="atributo-row">
-                                    <div class="atributo-label">Usuario</div>
-                                    <div class="atributo-value">Deviant</div>
-                                </div>
-                                <div class="atributo-row">
-                                    <div class="atributo-label">Fecha de inicio</div>
-                                    <div class="atributo-value">16 / 1 / 2026</div>
-                                </div>
-                                <div class="atributo-row">
-                                    <div class="atributo-label">Raza</div>
-                                    <div class="atributo-value">Mutante</div>
-                                </div>
-                                <div class="atributo-row">
-                                    <div class="atributo-label">Edad</div>
-                                    <div class="atributo-value">Joven adulta</div>
-                                </div>
-                                <div class="atributo-row">
-                                    <div class="atributo-label">Agrupacion</div>
-                                    <div class="atributo-value">Hermandad de Mutantes</div>
-                                </div>
-                                <div class="atributo-row">
-                                    <div class="atributo-label">Perfiles</div>
-                                    <div class="atributo-value">Mistico, combatiente agil</div>
-                                </div>
-                                <div class="atributo-row">
-                                    <div class="atributo-label">Experiencia</div>
-                                    <div class="atributo-value">250 / 0 / 250</div>
-                                </div>
-                                <div class="atributo-row">
-                                    <div class="atributo-label">Dactilo</div>
-                                    <div class="atributo-value">0 / 0 / 0</div>
-                                </div>
+                        <div class="atributos-container">
+                            <div class="atributo-row">
+                                <div class="atributo-label">Usuario</div>
+                                <div class="atributo-value">Deviant</div>
                             </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Seccion 3: Bitacora -->
-                <section class="seccion seccion-3">
-                    <h2 class="titulo-seccion titulo-bitacora">BITACORA</h2>
-                    <div class="frame3-container">
-                        <img src="SVG/Blanco/Frame 3.svg" class="frame3-svg" alt="">
-                        <div class="bitacora-content">
-                            <div class="bitacora-titulo-box">
-                                <div class="titulo-esquina-izq"></div>
-                                <div class="titulo-centro">Contenido Basico</div>
-                                <div class="titulo-esquina-der"></div>
+                            <div class="atributo-row">
+                                <div class="atributo-label">Fecha de inicio</div>
+                                <div class="atributo-value">16 / 1 / 2026</div>
+                            </div>
+                            <div class="atributo-row">
+                                <div class="atributo-label">Raza</div>
+                                <div class="atributo-value">Mutante</div>
+                            </div>
+                            <div class="atributo-row">
+                                <div class="atributo-label">Edad</div>
+                                <div class="atributo-value">Joven adulta</div>
+                            </div>
+                            <div class="atributo-row">
+                                <div class="atributo-label">Agrupacion</div>
+                                <div class="atributo-value">Hermandad de Mutantes</div>
+                            </div>
+                            <div class="atributo-row">
+                                <div class="atributo-label">Perfiles</div>
+                                <div class="atributo-value">Mistico, combatiente agil</div>
+                            </div>
+                            <div class="atributo-row">
+                                <div class="atributo-label">Experiencia</div>
+                                <div class="atributo-value">250 / 0 / 250</div>
+                            </div>
+                            <div class="atributo-row">
+                                <div class="atributo-label">Dactilo</div>
+                                <div class="atributo-value">0 / 0 / 0</div>
                             </div>
                         </div>
                     </div>
-                </section>
+                </div>
+            </section>
 
-                <!-- Seccion 4: Cronologia -->
-                <section class="seccion seccion-4">
-                    <div class="cronologia-box">
-                        <!-- Esquinas Frame 4 -->
-                        <img src="SVG/Blanco/Frame 4 - Esquina superior izquierda.svg" class="esquina4 esquina4-sup-izq" alt="">
-                        <img src="SVG/Blanco/Frame 4 - Esquina superior izquierda.svg" class="esquina4 esquina4-sup-der" alt="">
-                        <img src="SVG/Blanco/Frame 4 - Esquina superior izquierda.svg" class="esquina4 esquina4-inf-izq" alt="">
-                        <img src="SVG/Blanco/Frame 4 - Esquina superior izquierda.svg" class="esquina4 esquina4-inf-der" alt="">
-
-                        <div class="cronologia-content">
-                            <div class="cronologia-row">
-                                <div class="cronologia-fecha">19.1.2026</div>
-                                <div class="cronologia-suceso">Comienzo mi historia en el roleplay, que piti que pata que coco un patin.</div>
-                            </div>
-                            <div class="cronologia-row">
-                                <div class="cronologia-fecha">19.1.2026</div>
-                                <div class="cronologia-suceso">Lorem ipsum dolor sit amet.</div>
-                            </div>
-                            <div class="cronologia-row">
-                                <div class="cronologia-fecha">19.1.2026</div>
-                                <div class="cronologia-suceso">Eh guapo que miras.</div>
-                            </div>
-                            <div class="cronologia-row">
-                                <div class="cronologia-fecha">19.1.2026</div>
-                                <div class="cronologia-suceso">Voy al evento de la chiringola.</div>
-                            </div>
-                            <div class="cronologia-row">
-                                <div class="cronologia-fecha">19.1.2026</div>
-                                <div class="cronologia-suceso">Me peto a tu puta madre.</div>
-                            </div>
+            <!-- Seccion 3: Bitacora -->
+            <section class="seccion seccion-3">
+                <h2 class="titulo-seccion titulo-bitacora">BITACORA</h2>
+                <div class="frame3-container">
+                    <img src="SVG/Blanco/Frame 3.svg" class="frame3-svg svg-blanco" alt="">
+                    <img src="SVG/Rojo/Frame 3.svg" class="frame3-svg svg-rojo" alt="">
+                    <div class="bitacora-content">
+                        <div class="bitacora-titulo-box">
+                            <div class="titulo-esquina-izq"></div>
+                            <div class="titulo-centro">Contenido Basico</div>
+                            <div class="titulo-esquina-der"></div>
+                        </div>
+                        <div class="bitacora-texto">
+                            <p>Aqui va el contenido de texto de la bitacora. Puedes escribir lo que necesites en este espacio reservado para la informacion del personaje.</p>
                         </div>
                     </div>
-                </section>
-            </div>
+                </div>
+            </section>
 
-            <!-- CAPA ROJA (Estado hover/transmutado) -->
-            <div class="capa capa-roja">
-                <!-- Seccion 1: Frame principal con imagen -->
-                <section class="seccion seccion-1">
-                    <div class="frame1-container">
-                        <div class="imagen-personaje">
-                            <img src="https://placehold.co/280x340/1F0506/D81F38?text=IMAGEN" alt="Imagen del personaje">
+            <!-- Seccion 4: Cronologia -->
+            <section class="seccion seccion-4">
+                <div class="cronologia-box">
+                    <!-- Esquinas Frame 4 Blancas -->
+                    <img src="SVG/Blanco/Frame 4 - Esquina superior izquierda.svg" class="esquina4 esquina4-sup-izq svg-blanco" alt="">
+                    <img src="SVG/Blanco/Frame 4 - Esquina superior izquierda.svg" class="esquina4 esquina4-sup-der svg-blanco" alt="">
+                    <img src="SVG/Blanco/Frame 4 - Esquina superior izquierda.svg" class="esquina4 esquina4-inf-izq svg-blanco" alt="">
+                    <img src="SVG/Blanco/Frame 4 - Esquina superior izquierda.svg" class="esquina4 esquina4-inf-der svg-blanco" alt="">
+                    <!-- Esquinas Frame 4 Rojas -->
+                    <img src="SVG/Rojo/Frame 4 - Esquina superior izquierda.svg" class="esquina4 esquina4-sup-izq svg-rojo" alt="">
+                    <img src="SVG/Rojo/Frame 4 - Esquina superior izquierda.svg" class="esquina4 esquina4-sup-der svg-rojo" alt="">
+                    <img src="SVG/Rojo/Frame 4 - Esquina superior izquierda.svg" class="esquina4 esquina4-inf-izq svg-rojo" alt="">
+                    <img src="SVG/Rojo/Frame 4 - Esquina superior izquierda.svg" class="esquina4 esquina4-inf-der svg-rojo" alt="">
+
+                    <div class="cronologia-content">
+                        <div class="cronologia-row">
+                            <div class="cronologia-fecha">19.1.2026</div>
+                            <div class="cronologia-suceso">Comienzo mi historia en el roleplay, que piti que pata que coco un patin.</div>
                         </div>
-                        <img src="SVG/Rojo/Frame 1.svg" alt="Frame 1" class="frame1-svg">
-                    </div>
-                </section>
-
-                <!-- Seccion 2: Datos Basicos -->
-                <section class="seccion seccion-2">
-                    <div class="seccion2-content">
-                        <!-- Esquinas -->
-                        <img src="SVG/Rojo/Frame 2 - Esquina superior izquierda.svg" class="esquina esquina-sup-izq" alt="">
-                        <img src="SVG/Rojo/Frame 2 - Esquina superior izquierda.svg" class="esquina esquina-sup-der" alt="">
-                        <img src="SVG/Rojo/Frame 2 - Esquina inferior izquierda.svg" class="esquina esquina-inf-izq" alt="">
-                        <img src="SVG/Rojo/Frame 2 - Esquina inferior izquierda.svg" class="esquina esquina-inf-der" alt="">
-
-                        <!-- Contenido -->
-                        <div class="seccion2-inner">
-                            <h2 class="titulo-seccion">DATOS BASICOS</h2>
-                            <img src="SVG/Rojo/Frame 2 - Separador.svg" class="separador" alt="">
-
-                            <div class="atributos-container">
-                                <div class="atributo-row">
-                                    <div class="atributo-label">Usuario</div>
-                                    <div class="atributo-value">Deviant</div>
-                                </div>
-                                <div class="atributo-row">
-                                    <div class="atributo-label">Fecha de inicio</div>
-                                    <div class="atributo-value">16 / 1 / 2026</div>
-                                </div>
-                                <div class="atributo-row">
-                                    <div class="atributo-label">Raza</div>
-                                    <div class="atributo-value">Mutante</div>
-                                </div>
-                                <div class="atributo-row">
-                                    <div class="atributo-label">Edad</div>
-                                    <div class="atributo-value">Joven adulta</div>
-                                </div>
-                                <div class="atributo-row">
-                                    <div class="atributo-label">Agrupacion</div>
-                                    <div class="atributo-value">Hermandad de Mutantes</div>
-                                </div>
-                                <div class="atributo-row">
-                                    <div class="atributo-label">Perfiles</div>
-                                    <div class="atributo-value">Mistico, combatiente agil</div>
-                                </div>
-                                <div class="atributo-row">
-                                    <div class="atributo-label">Experiencia</div>
-                                    <div class="atributo-value">250 / 0 / 250</div>
-                                </div>
-                                <div class="atributo-row">
-                                    <div class="atributo-label">Dactilo</div>
-                                    <div class="atributo-value">0 / 0 / 0</div>
-                                </div>
-                            </div>
+                        <div class="cronologia-row">
+                            <div class="cronologia-fecha">19.1.2026</div>
+                            <div class="cronologia-suceso">Lorem ipsum dolor sit amet.</div>
+                        </div>
+                        <div class="cronologia-row">
+                            <div class="cronologia-fecha">19.1.2026</div>
+                            <div class="cronologia-suceso">Eh guapo que miras.</div>
+                        </div>
+                        <div class="cronologia-row">
+                            <div class="cronologia-fecha">19.1.2026</div>
+                            <div class="cronologia-suceso">Voy al evento de la chiringola.</div>
+                        </div>
+                        <div class="cronologia-row">
+                            <div class="cronologia-fecha">19.1.2026</div>
+                            <div class="cronologia-suceso">Me peto a tu puta madre.</div>
                         </div>
                     </div>
-                </section>
-
-                <!-- Seccion 3: Bitacora -->
-                <section class="seccion seccion-3">
-                    <h2 class="titulo-seccion titulo-bitacora">BITACORA</h2>
-                    <div class="frame3-container">
-                        <img src="SVG/Rojo/Frame 3.svg" class="frame3-svg" alt="">
-                        <div class="bitacora-content">
-                            <div class="bitacora-titulo-box">
-                                <div class="titulo-esquina-izq"></div>
-                                <div class="titulo-centro">Contenido Basico</div>
-                                <div class="titulo-esquina-der"></div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Seccion 4: Cronologia -->
-                <section class="seccion seccion-4">
-                    <div class="cronologia-box">
-                        <!-- Esquinas Frame 4 -->
-                        <img src="SVG/Rojo/Frame 4 - Esquina superior izquierda.svg" class="esquina4 esquina4-sup-izq" alt="">
-                        <img src="SVG/Rojo/Frame 4 - Esquina superior izquierda.svg" class="esquina4 esquina4-sup-der" alt="">
-                        <img src="SVG/Rojo/Frame 4 - Esquina superior izquierda.svg" class="esquina4 esquina4-inf-izq" alt="">
-                        <img src="SVG/Rojo/Frame 4 - Esquina superior izquierda.svg" class="esquina4 esquina4-inf-der" alt="">
-
-                        <div class="cronologia-content">
-                            <div class="cronologia-row">
-                                <div class="cronologia-fecha">19.1.2026</div>
-                                <div class="cronologia-suceso">Comienzo mi historia en el roleplay, que piti que pata que coco un patin.</div>
-                            </div>
-                            <div class="cronologia-row">
-                                <div class="cronologia-fecha">19.1.2026</div>
-                                <div class="cronologia-suceso">Lorem ipsum dolor sit amet.</div>
-                            </div>
-                            <div class="cronologia-row">
-                                <div class="cronologia-fecha">19.1.2026</div>
-                                <div class="cronologia-suceso">Eh guapo que miras.</div>
-                            </div>
-                            <div class="cronologia-row">
-                                <div class="cronologia-fecha">19.1.2026</div>
-                                <div class="cronologia-suceso">Voy al evento de la chiringola.</div>
-                            </div>
-                            <div class="cronologia-row">
-                                <div class="cronologia-fecha">19.1.2026</div>
-                                <div class="cronologia-suceso">Me peto a tu puta madre.</div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
+                </div>
+            </section>
 
             <!-- Anillo magico de transicion -->
             <div class="magic-ring"></div>

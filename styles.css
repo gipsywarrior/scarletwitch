@@ -51,60 +51,57 @@ body {
     width: var(--ancho-ficha);
     position: relative;
     background-color: var(--base);
-    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     overflow: hidden;
 }
 
 /* ================================ */
-/* SISTEMA DE CAPAS                 */
+/* SISTEMA MODULAR DE CAPAS SVG     */
 /* ================================ */
 
-.capa {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
-
-.capa-blanca {
-    position: relative;
-    z-index: 2;
+/* Estado inicial: SVG blancos visibles con neon, rojos ocultos */
+.svg-blanco {
     opacity: 1;
     transition: opacity 0.8s ease-out;
-}
-
-.capa-blanca .titulo-seccion,
-.capa-blanca .atributo-label,
-.capa-blanca .atributo-value,
-.capa-blanca .titulo-centro,
-.capa-blanca .cronologia-fecha,
-.capa-blanca .cronologia-suceso {
-    color: var(--blanco);
-}
-
-.capa-blanca .frame1-svg,
-.capa-blanca .frame3-svg,
-.capa-blanca .esquina,
-.capa-blanca .separador,
-.capa-blanca .esquina4 {
     animation: neonPulse 3s ease-in-out infinite;
 }
 
-.capa-roja {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1;
-    clip-path: circle(0% at 50% 50%);
-    transition: clip-path 0s;
+.svg-rojo {
+    opacity: 0;
+    transition: opacity 0.8s ease-out 0.3s;
 }
 
-.capa-roja .titulo-seccion,
-.capa-roja .atributo-label,
-.capa-roja .atributo-value,
-.capa-roja .titulo-centro,
-.capa-roja .cronologia-fecha,
-.capa-roja .cronologia-suceso {
+/* Estado transmutado: blancos ocultos, rojos visibles */
+.ficha.transmuted .svg-blanco {
+    opacity: 0;
+    animation: none;
+}
+
+.ficha.transmuted .svg-rojo {
+    opacity: 1;
+}
+
+/* Colores de texto segun estado */
+.titulo-seccion,
+.atributo-label,
+.atributo-value,
+.titulo-centro,
+.cronologia-fecha,
+.cronologia-suceso,
+.bitacora-texto {
+    color: var(--blanco);
+    transition: color 0.8s ease-out;
+}
+
+.ficha.transmuted .titulo-seccion,
+.ficha.transmuted .atributo-label,
+.ficha.transmuted .atributo-value,
+.ficha.transmuted .titulo-centro,
+.ficha.transmuted .cronologia-fecha,
+.ficha.transmuted .cronologia-suceso,
+.ficha.transmuted .bitacora-texto {
     color: var(--primario);
 }
 
@@ -119,22 +116,6 @@ body {
     50% {
         filter: drop-shadow(0 0 12px #D81F38) drop-shadow(0 0 30px #a0152a);
     }
-}
-
-/* ================================ */
-/* ESTADOS DE HOVER Y TRANSMUTACION */
-/* ================================ */
-
-.ficha:hover .capa-blanca,
-.ficha.transmuted .capa-blanca {
-    opacity: 0;
-    transition: opacity 1s ease-out 0.3s;
-}
-
-.ficha:hover .capa-roja,
-.ficha.transmuted .capa-roja {
-    clip-path: circle(100% at 50% 50%);
-    transition: clip-path 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 /* ================================ */
@@ -155,17 +136,17 @@ body {
     z-index: 10;
 }
 
-.ficha:hover .magic-ring {
-    width: 150%;
-    height: 150%;
+.ficha.transmuting .magic-ring {
+    width: 200%;
+    height: 200%;
     border-color: rgba(216, 31, 56, 0.7);
     opacity: 1;
     box-shadow:
         0 0 25px rgba(216, 31, 56, 0.5),
         inset 0 0 15px rgba(216, 31, 56, 0.2);
     transition:
-        width 1s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-        height 1s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        height 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
         opacity 0.2s ease-out,
         border-color 0.3s ease-out,
         box-shadow 0.5s ease-out;
@@ -191,25 +172,27 @@ body {
     justify-content: center;
     align-items: center;
     padding: 20px 0;
+    width: 100%;
 }
 
 .frame1-container {
     position: relative;
-    width: 674px;
-    height: 662px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .frame1-svg {
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+/* SVGs superpuestos */
+.frame1-container .svg-rojo {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 2;
-    pointer-events: none;
 }
 
 .imagen-personaje {
@@ -219,7 +202,7 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 1;
+    z-index: -1;
     overflow: hidden;
 }
 
@@ -236,21 +219,19 @@ body {
 .seccion-2 {
     display: flex;
     justify-content: center;
-    padding: 30px 20px;
+    padding: 30px 0;
+    width: 100%;
 }
 
 .seccion2-content {
     position: relative;
     width: 100%;
-    max-width: 600px;
-    padding: 50px 30px;
+    padding: 60px 30px;
 }
 
 /* Esquinas Seccion 2 */
 .esquina {
     position: absolute;
-    width: 80px;
-    height: auto;
 }
 
 .esquina-sup-izq {
@@ -275,6 +256,11 @@ body {
     transform: scaleX(-1);
 }
 
+/* Esquinas rojas superpuestas */
+.esquina.svg-rojo {
+    z-index: 1;
+}
+
 .seccion2-inner {
     display: flex;
     flex-direction: column;
@@ -289,10 +275,22 @@ body {
     font-weight: normal;
 }
 
+.separador-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 .separador {
-    width: 509px;
-    max-width: 100%;
+    width: 100%;
     height: auto;
+}
+
+.separador.svg-rojo {
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 /* Atributos */
@@ -300,8 +298,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 2px;
-    width: 509px;
-    max-width: 100%;
+    width: 100%;
     background-color: var(--primario);
     padding: 2px;
     margin-top: 10px;
@@ -336,7 +333,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 30px 20px;
+    padding: 30px 0;
+    width: 100%;
 }
 
 .titulo-bitacora {
@@ -345,13 +343,18 @@ body {
 
 .frame3-container {
     position: relative;
-    width: 671px;
-    max-width: 100%;
+    width: 100%;
 }
 
 .frame3-svg {
     width: 100%;
     height: auto;
+}
+
+.frame3-svg.svg-rojo {
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .bitacora-content {
@@ -400,6 +403,14 @@ body {
     font-size: 16px;
 }
 
+/* Texto de bitacora */
+.bitacora-texto {
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.6;
+    padding: 0 20px;
+}
+
 /* ================================ */
 /* SECCION 4: CRONOLOGIA            */
 /* ================================ */
@@ -407,23 +418,21 @@ body {
 .seccion-4 {
     display: flex;
     justify-content: center;
-    padding: 30px 20px 50px;
+    padding: 30px 0 50px;
+    width: 100%;
 }
 
 .cronologia-box {
     position: relative;
-    width: 600px;
-    max-width: 100%;
+    width: calc(100% - 60px);
     background-color: var(--secundario);
     border: 2px solid var(--primario);
-    padding: 40px 30px;
+    padding: 50px 30px;
 }
 
 /* Esquinas Frame 4 */
 .esquina4 {
     position: absolute;
-    width: 100px;
-    height: auto;
 }
 
 .esquina4-sup-izq {
@@ -447,6 +456,11 @@ body {
     bottom: -2px;
     right: -2px;
     transform: scale(-1, -1);
+}
+
+/* Esquinas rojas superpuestas */
+.esquina4.svg-rojo {
+    z-index: 1;
 }
 
 .cronologia-content {
@@ -497,11 +511,6 @@ body {
     z-index: 100;
 }
 
-.magic-particle.transition-burst {
-    animation-duration: 1.5s !important;
-    animation-timing-function: ease-out !important;
-}
-
 /* ================================ */
 /* RESPONSIVE                       */
 /* ================================ */
@@ -511,12 +520,6 @@ body {
         width: 100%;
     }
 
-    .frame1-container {
-        width: 100%;
-        height: auto;
-        aspect-ratio: 674 / 662;
-    }
-
     .imagen-personaje {
         width: 40%;
         height: auto;
@@ -524,11 +527,7 @@ body {
     }
 
     .seccion2-content {
-        padding: 40px 20px;
-    }
-
-    .esquina {
-        width: 60px;
+        padding: 50px 20px;
     }
 
     .titulo-seccion {
@@ -536,10 +535,7 @@ body {
     }
 
     .cronologia-box {
-        padding: 30px 20px;
-    }
-
-    .esquina4 {
-        width: 70px;
+        padding: 40px 20px;
+        width: calc(100% - 40px);
     }
 }

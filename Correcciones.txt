@@ -1,0 +1,11 @@
+Cosas que quiero que corrijas sobre lo que ya hiciste:
+
+- Quiero que uses algun tipo de tecnología modular para que no se repita dos veces el código por cada una de las capas. Por ejemplo, ahora fui a cambiar la imagen y me encontré con que tenia que editarla en las dos capas para que haga efecto.
+- Quiero que el efecto del hover no flaquee si muevo el cursor fuera de la hoja a mitad de camino. Quizás hacerlo con javascript para que sea un touch y el resto suceda por si solo. Quiero que la segunda capa quede PERMANENTE despues del primer hover.
+- Quiero que el cursor sea normal y no fuerce cursor pointer.
+- Saca el segundo efecto de chispas que sale cuando hago el hover.
+- Haz que las chispas sean aleatorias y uniformes en cantidad, porque no veo que salgan chispas del lado izquierdo.
+- No me gusta que las chispas caigan para abajo antes de desaparecer. Mejor que se desvanezcan hacia arriba.
+- Creo que achicaste los SVG. No se si estoy de acuerdo con eso, que se adapten naturalmente al ancho. El padding que le pusiste al primer svg me pareció bien, se ve natural, pero se pierde la continuidad con los demá (algunos son muy chiquitos, otros no parecen ocupar el mismo espacio horizontal que el primer svg).
+- En bitácora te faltó un espacio para el texto debajo de la caja de titulo de contenido basico.
+- Quita el orbe blanco del efecto del click y deja solo la onda roja.

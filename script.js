@@ -1,49 +1,40 @@
 // Zarina Milenov - Efectos Magicos
 document.addEventListener('DOMContentLoaded', function() {
-    const ficha = document.querySelector('.ficha');
+    const ficha = document.getElementById('ficha');
     let isTransmuted = false;
+    let isTransmuting = false;
 
     // Crear particulas flotantes magicas
     createMagicParticles();
 
     function createMagicParticles() {
-        // Numero de particulas - Puedes reducir a 6-8 si hay problemas de rendimiento
+        // Numero de particulas
         const particleCount = 12;
 
         // Agregar keyframes dinamicamente
         const style = document.createElement('style');
         style.id = 'particle-styles';
         style.textContent = `
-            @keyframes floatParticle {
-                0%, 100% {
+            @keyframes floatParticleUp {
+                0% {
                     opacity: 0;
                     transform: translateY(0) scale(0.3);
                 }
-                20% {
+                15% {
                     opacity: 1;
-                    transform: translateY(-15px) scale(1);
+                    transform: translateY(-10px) scale(1);
                 }
                 50% {
                     opacity: 0.8;
-                    transform: translateY(-30px) scale(0.9);
+                    transform: translateY(-40px) scale(0.9);
                 }
-                80% {
-                    opacity: 0.4;
-                    transform: translateY(-50px) scale(0.5);
-                }
-            }
-            @keyframes floatParticleFast {
-                0% {
-                    opacity: 0;
-                    transform: translate(0, 0) scale(0.5);
-                }
-                10% {
-                    opacity: 1;
-                    transform: translate(var(--dx), var(--dy)) scale(1);
+                85% {
+                    opacity: 0.3;
+                    transform: translateY(-70px) scale(0.6);
                 }
                 100% {
                     opacity: 0;
-                    transform: translate(calc(var(--dx) * 3), calc(var(--dy) * 3)) scale(0);
+                    transform: translateY(-90px) scale(0.3);
                 }
             }
         `;
@@ -59,70 +50,49 @@ document.addEventListener('DOMContentLoaded', function() {
         particle.className = 'magic-particle';
 
         const size = Math.random() * 5 + 3;
-        const delay = Math.random() * 3;
+        const delay = Math.random() * 5;
         const duration = Math.random() * 3 + 4;
+
+        // Distribucion uniforme en todo el ancho (0-100%)
+        const posX = Math.random() * 100;
+        // Posicion vertical aleatoria
+        const posY = Math.random() * 100;
 
         particle.style.cssText = `
             width: ${size}px;
             height: ${size}px;
-            left: ${Math.random() * 90 + 5}%;
-            top: ${Math.random() * 90 + 5}%;
-            animation: floatParticle ${duration}s ease-in-out ${delay}s infinite;
+            left: ${posX}%;
+            top: ${posY}%;
+            animation: floatParticleUp ${duration}s ease-in-out ${delay}s infinite;
         `;
 
         ficha.appendChild(particle);
         return particle;
     }
 
-    // Transmutacion permanente al hacer hover
-    ficha.addEventListener('mouseenter', function() {
-        if (!isTransmuted) {
-            // Crear explosion de particulas caoticas durante la transicion
-            createTransitionParticles();
+    // Transmutacion permanente al primer toque/hover
+    // Usamos mouseenter pero la transicion completa por JS, no depende del mouse
+    ficha.addEventListener('mouseenter', triggerTransmutation);
+    ficha.addEventListener('touchstart', triggerTransmutation);
 
-            // Marcar como transmutado despues de la animacion
-            setTimeout(() => {
-                isTransmuted = true;
-                ficha.classList.add('transmuted');
-            }, 1300);
-        }
-    });
+    function triggerTransmutation() {
+        if (isTransmuted || isTransmuting) return;
 
-    // Crear particulas caoticas durante la transicion
-    function createTransitionParticles() {
-        const burstCount = 20;
+        isTransmuting = true;
 
-        for (let i = 0; i < burstCount; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'magic-particle transition-burst';
+        // Agregar clase para animacion del anillo
+        ficha.classList.add('transmuting');
 
-            const size = Math.random() * 6 + 3;
-            const startX = Math.random() * 100;
-            const startY = Math.random() * 100;
-            const dx = (Math.random() - 0.5) * 80;
-            const dy = (Math.random() - 0.5) * 80 - 30; // Tendencia hacia arriba
-            const delay = Math.random() * 0.4;
-            const duration = Math.random() * 0.8 + 0.6;
-
-            particle.style.cssText = `
-                width: ${size}px;
-                height: ${size}px;
-                left: ${startX}%;
-                top: ${startY}%;
-                --dx: ${dx}px;
-                --dy: ${dy}px;
-                animation: floatParticleFast ${duration}s ease-out ${delay}s forwards;
-                z-index: 15;
-            `;
-
-            ficha.appendChild(particle);
-
-            // Remover despues de la animacion
-            setTimeout(() => particle.remove(), (delay + duration) * 1000 + 100);
-        }
+        // Despues de la animacion, marcar como transmutado permanentemente
+        setTimeout(() => {
+            isTransmuting = false;
+            isTransmuted = true;
+            ficha.classList.remove('transmuting');
+            ficha.classList.add('transmuted');
+        }, 1300);
     }
 
-    // Click para efecto de ondulacion
+    // Click para efecto de ondulacion (solo onda roja, sin orbe blanco)
     ficha.addEventListener('click', function(e) {
         const rect = ficha.getBoundingClientRect();
         const x = e.clientX - rect.left;
@@ -136,7 +106,7 @@ document.addEventListener('DOMContentLoaded', function() {
             width: 0;
             height: 0;
             border: 2px solid rgba(216, 31, 56, 0.8);
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 60%);
+            background: transparent;
             border-radius: 50%;
             transform: translate(-50%, -50%);
             pointer-events: none;
