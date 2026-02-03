@@ -32,6 +32,15 @@ PM: 250
 - Ilusiones de Ikonn
 - Contrahechizo: Ilusiones de Ikoon
 
+>Combatiente Agil
+- Patada rapida
+- Rodillazo elevado
+- Reflejo instantaneo
+- Golpe seco
+- Patada giratoria
+- Golpe preciso
+- Golpe desarmador
+
 >Comandos Basicos
 - Atacar
 - Defender
