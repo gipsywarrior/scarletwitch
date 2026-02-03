@@ -1,21 +1,21 @@
 import React, { useMemo } from 'react';
 import './NeonParticles.css';
 
-const NeonParticles = ({ count = 12 }) => {
+const NeonParticles = ({ count = 60 }) => {
   const particles = useMemo(() => {
     return Array.from({ length: count }).map((_, i) => ({
       id: i,
-      left: `${Math.random() * 90 + 5}%`,
-      top: `${Math.random() * 90 + 5}%`,
-      delay: `${Math.random() * 3}s`,
-      duration: `${4 + Math.random() * 3}s`,
-      size: `${3 + Math.random() * 5}px`,
+      left: `${Math.random() * 100}%`,
+      top: `${Math.random() * 100}%`,
+      delay: `-${Math.random() * 10}s`, 
+      duration: `${5 + Math.random() * 5}s`, 
+      size: `${2 + Math.random() * 3}px`,
     }));
   }, [count]);
 
   return (
     <div className="neon-particles-container">
-      {particles.map((p) => (
+      {particles.map((p, i) => (
         <div
           key={p.id}
           className="neon-particle"
@@ -24,7 +24,7 @@ const NeonParticles = ({ count = 12 }) => {
             top: p.top,
             width: p.size,
             height: p.size,
-            animation: `floatParticle ${p.duration} ease-in-out ${p.delay} infinite`,
+            animation: `${i % 2 === 0 ? 'sparkle' : 'sparkleAlt'} ${p.duration} linear ${p.delay} infinite`,
           }}
         />
       ))}
