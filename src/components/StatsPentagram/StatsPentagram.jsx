@@ -76,7 +76,7 @@ const StatsPentagram = () => {
         }));
 
         const wobbleRadius = 4;
-        const wobbleSpeed = 0.008;
+        const wobbleSpeed = 0.01;
         let animationFrameId;
 
         const animate = () => {
