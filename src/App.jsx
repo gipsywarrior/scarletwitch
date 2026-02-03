@@ -1,5 +1,5 @@
 import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import Seccion1 from './components/Seccion1/Seccion1'
 import Seccion2 from './components/Seccion2/Seccion2'
@@ -20,14 +20,19 @@ function ScrollToTop() {
 }
 
 function FichaPrincipal({ bitacora, historial, stats }) {
+  const [isTransmuted, setIsTransmuted] = useState(false);
+
   return (
     <div className="contenedor-principal">
-      <div className="ficha">
+      <div 
+        className={`ficha ${isTransmuted ? 'transmuted' : 'not-transmuted'}`}
+        onMouseEnter={() => !isTransmuted && setIsTransmuted(true)}
+      >
         <NeonParticles count={25} />
-        <Seccion1 />
-        <Seccion2 stats={stats} />
-        <Seccion3 bitacora={bitacora} />
-        <Seccion4 historial={historial} />
+        <Seccion1 isTransmuted={isTransmuted} />
+        <Seccion2 stats={stats} isTransmuted={isTransmuted} />
+        <Seccion3 bitacora={bitacora} isTransmuted={isTransmuted} />
+        <Seccion4 historial={historial} isTransmuted={isTransmuted} />
       </div>
     </div>
   )

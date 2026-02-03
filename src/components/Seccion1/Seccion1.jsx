@@ -1,11 +1,18 @@
 import frame1Rojo from '../../assets/svg/rojo/Frame 1.svg'
+import frame1Blanco from '../../assets/svg/blanco/Frame 1.svg'
 import './Seccion1.css'
 
-function Seccion1() {
+function Seccion1({ isTransmuted }) {
   return (
-    <div className="seccion seccion-1">
-      <div className="imagen-fondo"></div>
-      <img src={frame1Rojo} alt="Frame 1 Rojo" />
+    <div className={`seccion seccion-1 ${isTransmuted ? 'transmuted' : ''}`}>
+      <div className="marco-final-container">
+        <div className="imagen-fondo"></div>
+        <div className="magic-ring"></div>
+        <img src={frame1Rojo} className="svg-rojo" alt="Frame 1 Rojo" />
+        <div className="neon-layer">
+          <img src={frame1Blanco} className="svg-neon" alt="Frame 1 Blanco" />
+        </div>
+      </div>
     </div>
   )
 }

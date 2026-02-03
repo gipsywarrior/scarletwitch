@@ -3,8 +3,24 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
-    padding-top: 20px
+    overflow: visible;
+    padding-top: 20px;
+    padding-bottom: 200px;
+    transition: padding-bottom 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.seccion-1.transmuted {
+    padding-bottom: 0px;
+}
+
+.marco-final-container {
+    position: relative;
+    width: 680px;
+    height: 720px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
 }
 
 .imagen-fondo {
@@ -21,7 +37,133 @@
     z-index: 1;
 }
 
-.seccion-1 .ficha-svg {
+/* Magic ring that expands with the reveal */
+.magic-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    border: 3px solid var(--color-primario);
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 4;
+    box-shadow:
+        0 0 15px var(--color-primario),
+        0 0 30px var(--color-primario),
+        inset 0 0 10px rgba(216, 31, 56, 0.3);
+}
+
+.transmuted .magic-ring {
+    animation: ringExpand 1.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes ringExpand {
+    0% {
+        width: 0;
+        height: 0;
+        opacity: 1;
+        border-width: 4px;
+    }
+
+    40% {
+        opacity: 0.9;
+    }
+
+    70% {
+        opacity: 0.5;
+        border-width: 2px;
+    }
+
+    100% {
+        width: 150%;
+        height: 150%;
+        opacity: 0;
+        border-width: 1px;
+    }
+}
+
+/* Red SVG layer - clips from center outward */
+.svg-rojo {
     position: relative;
     z-index: 2;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    clip-path: circle(0% at 50% 50%);
+    transition: clip-path 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.transmuted .svg-rojo {
+    clip-path: circle(100% at 50% 50%);
+}
+
+/* Neon layer on top */
+.neon-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.svg-neon {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    animation: neonPulse 3s ease-in-out infinite, neonFlicker 0.1s infinite;
+}
+
+/* Fade out neon after reveal starts */
+.transmuted .neon-layer {
+    opacity: 0;
+    transition: opacity 0.8s ease-out 0.4s;
+    /* Delay fade until ring passes */
+}
+
+@keyframes neonPulse {
+
+    0%,
+    100% {
+        filter: drop-shadow(0 0 6px #ff2a2a) drop-shadow(0 0 15px #cc0033);
+    }
+
+    50% {
+        filter: drop-shadow(0 0 12px #ff4040) drop-shadow(0 0 30px #aa0025);
+    }
+}
+
+@keyframes neonFlicker {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.92;
+    }
+
+    85% {
+        opacity: 0.85;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    95% {
+        opacity: 0.7;
+    }
+
+    98% {
+        opacity: 1;
+    }
 }
