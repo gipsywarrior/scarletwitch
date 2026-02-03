@@ -58,7 +58,7 @@ PM: 250
 
 [Historial]
 11.1.26, "Me uno al rol", +250
-11.1.26, "Escojo los perfiles Mistico, Combatiente Agil"
+11.1.26, "Escojo los perfiles Mistico y Combatiente Agil"
 11.1.26, "Escojo Tomo Magico: Magia Arcana"
 17.1.26, "Evento: Calamidad en Titan", +250, +1 DB, https://muh.forumcommunity.net/?t=63412056
 19.1.26, "Escena: Golpe en la Costa Oeste", +50, 0, https://muh.forumcommunity.net/?t=63413117&p=471249369
