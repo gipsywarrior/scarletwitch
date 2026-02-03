@@ -1,0 +1,51 @@
+[Bitacora]
+>Magia Arcana
+- Afinidad magica
+- Percepción arcana
+- Telequinesis magica
+- Expulsión magica
+- Retención magica
+
+>Perfil Mistico
+- Inicio en la magia
+- Variedad magica 
+- Daño mistico y al alma
+- Canalizacion de auras
+- Rayo mistico
+- Escudo mistico 
+- Llamas Faltine 
+- Bandas Zafiro de Storaan
+- Onda mistica
+- Portal mistico 
+- Ilusiones de Ikonn
+- Contrahechizo: Ilusiones de Ikoon
+
+>Comandos Basicos
+- Atacar
+- Defender
+- Evadir
+- Resistir
+- Liberar
+- Socorrer
+- Salto
+- Impulso
+- Desplazar
+- Irrumpir
+- Llamado de ayuda
+- Huir
+- Equipar/Desequipar
+
+[Historial]
+11.1.26, "Me uno al rol", +250
+11.1.26, "Escojo los perfiles Mistico, Combatiente Agil"
+11.1.26, "Escojo Tomo Magico: Magia Arcana"
+17.1.26, "Evento: Calamidad en Titan", +250, +1 DB, https://muh.forumcommunity.net/?t=63412056
+19.1.26, "Escena: Golpe en la Costa Oeste", +50, 0, https://muh.forumcommunity.net/?t=63413117&p=471249369
+20.1.26. "Escena: Darkhawk", +25, 0, https://muh.forumcommunity.net/?t=63413117&p=471257428
+30.1.26. "Escena: La Caceria", +25, 0, https://muh.forumcommunity.net/?t=63413117&p=471347392
+30.1.26. "Asciendo a Rango II", +250
+30.1.26. "Logro: Mortal", +25
+1.2.26. "Escena: Conferencia en Llamas. Recibo mención", +25, 0, https://muh.forumcommunity.net/?t=63413117&p=471361819
+3.2.26. "Desbloqueo el Rango I de Magia Arcana", -400
+3.2.26. "Desbloqueo el Rango II de Magia Arcana", -400
+
