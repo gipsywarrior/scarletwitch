@@ -13,7 +13,7 @@ const useDynamicData = () => {
     });
 
     useEffect(() => {
-        fetch('/data.txt')
+        fetch(`${import.meta.env.BASE_URL}data.txt`)
             .then(res => res.text())
             .then(text => {
                 const parsed = parseTxt(text);

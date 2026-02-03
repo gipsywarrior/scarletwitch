@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
     overflow: visible;
-    padding-top: 20px;
+    padding-top: px;
     padding-bottom: 200px;
     transition: padding-bottom 1.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -83,7 +83,27 @@
     }
 }
 
-/* Red SVG layer - clips from center outward */
+/* Base red layer - appears instantly to provide color during neon fade */
+.svg-rojo-base {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1.5;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    opacity: 0;
+    pointer-events: none;
+    /* Instant opacity change to avoid grey tranches */
+    transition: opacity 0s;
+}
+
+.transmuted .svg-rojo-base {
+    opacity: 1;
+}
+
+/* Animated red layer - expands from center */
 .svg-rojo {
     position: relative;
     z-index: 2;
@@ -110,6 +130,8 @@
     align-items: center;
     z-index: 3;
     pointer-events: none;
+    transition: opacity 0.8s ease-out;
+    /* Removed delay to start with ring */
 }
 
 .svg-neon {
@@ -119,11 +141,9 @@
     animation: neonPulse 3s ease-in-out infinite, neonFlicker 1.2s infinite;
 }
 
-/* Fade out neon after reveal starts */
+/* Fade out neon immediately when transmuted */
 .transmuted .neon-layer {
     opacity: 0;
-    transition: opacity 0.8s ease-out 0.4s;
-    /* Delay fade until ring passes */
 }
 
 @keyframes neonPulse {

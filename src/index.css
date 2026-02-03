@@ -16,9 +16,7 @@
   line-height: 24px;
   font-weight: 400;
 
-  color-scheme: dark;
   color: var(--color-primario);
-  background-color: #0d0d12;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -26,20 +24,15 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-  justify-content: center;
-}
-
 #root {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+body {
+  margin: 0
 }
 
 

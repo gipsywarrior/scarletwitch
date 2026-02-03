@@ -8,6 +8,7 @@ function Seccion1({ isTransmuted }) {
       <div className="marco-final-container">
         <div className="imagen-fondo"></div>
         <div className="magic-ring"></div>
+        <img src={frame1Rojo} className="svg-rojo-base" alt="Frame 1 Rojo Base" />
         <img src={frame1Rojo} className="svg-rojo" alt="Frame 1 Rojo" />
         <div className="neon-layer">
           <img src={frame1Blanco} className="svg-neon" alt="Frame 1 Blanco" />

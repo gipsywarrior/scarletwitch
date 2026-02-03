@@ -1,6 +1,8 @@
 .ficha {
   position: relative;
   width: 720px;
+  height: 2588px;
+  overflow: hidden;
   background-color: var(--color-base);
   border: 1px solid var(--color-secundario);
   padding: 20px;
