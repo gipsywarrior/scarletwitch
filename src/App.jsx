@@ -28,7 +28,7 @@ function FichaPrincipal({ bitacora, historial, stats }) {
         className={`ficha ${isTransmuted ? 'transmuted' : 'not-transmuted'}`}
         onMouseEnter={() => !isTransmuted && setIsTransmuted(true)}
       >
-        <NeonParticles count={25} />
+        <NeonParticles count={80} />
         <Seccion1 isTransmuted={isTransmuted} />
         <Seccion2 stats={stats} isTransmuted={isTransmuted} />
         <Seccion3 bitacora={bitacora} isTransmuted={isTransmuted} />

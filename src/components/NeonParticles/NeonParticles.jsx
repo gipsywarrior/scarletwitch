@@ -8,8 +8,8 @@ const NeonParticles = ({ count = 60 }) => {
       left: `${Math.random() * 100}%`,
       top: `${Math.random() * 100}%`,
       delay: `-${Math.random() * 10}s`, 
-      duration: `${5 + Math.random() * 5}s`, 
-      size: `${2 + Math.random() * 3}px`,
+      duration: `${4 + Math.random() * 8}s`, 
+      size: `${2 + Math.random() * 6}px`,
     }));
   }, [count]);
 
