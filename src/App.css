@@ -1,11 +1,3 @@
-.contenedor-principal {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding: 50px 0px;
-}
-
 .ficha {
   position: relative;
   width: 720px;
