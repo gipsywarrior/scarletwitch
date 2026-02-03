@@ -15,7 +15,9 @@
     width: 276px;
     height: 410px;
     margin-top: 34px;
-    background-color: white;
+    background-image: url('/wanda.gif');
+    background-size: cover;
+    background-position: center;
     z-index: 1;
 }
 

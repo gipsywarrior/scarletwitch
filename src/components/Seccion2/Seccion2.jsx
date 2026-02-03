@@ -23,7 +23,7 @@ function Seccion2({ stats: dynamicStats }) {
         </div>
         <div className="item-dato">
           <div className="campo">Fecha De Inicio</div>
-          <div className="valor">16 / 1 / 2026</div>
+          <div className="valor">11 / 1 / 2026</div>
         </div>
         <div className="item-dato">
           <div className="campo">Raza</div>
@@ -31,7 +31,7 @@ function Seccion2({ stats: dynamicStats }) {
         </div>
         <div className="item-dato">
           <div className="campo">Edad</div>
-          <div className="valor">Joven Adulta</div>
+          <div className="valor">Joven adulta</div>
         </div>
         <div className="item-dato">
           <div className="campo">Agrupacion</div>
