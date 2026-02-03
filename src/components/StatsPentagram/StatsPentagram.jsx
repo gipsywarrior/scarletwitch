@@ -181,8 +181,7 @@ const StatsPentagram = ({ stats: dynamicStats }) => {
     return (
         <div className="sigil-container">
             <svg id="sigil" viewBox="-180 -180 360 360">
-                <circle r="120" className="guide" />
-                <circle r="80" className="guide" />
+                <circle r="125" className="pentagram-base" />
                 <path id="pentacle" ref={pentacleRef} />
                 {/* Rounded arc tips at each pentacle vertex */}
                 {[0, 1, 2, 3, 4].map(i => (
@@ -203,6 +202,15 @@ const StatsPentagram = ({ stats: dynamicStats }) => {
                 <g className="pm-center">
                     <text id="pm-label" x="0" y="-12">PM</text>
                     <text id="pm-value" ref={pmValueRef} x="0" y="12">{display(stats.pm)}</text>
+                </g>
+                {/* Daedric Symbols around the pentagram */}
+                <g className="daedric-symbols">
+                    {/* A - Arriba Izquierda (entre VIT y REF) */}
+                    <text className="daedric-symbol" x="-55" y="-70">A</text>
+                    {/* S - Arriba Derecha (entre VIT y FUE) */}
+                    <text className="daedric-symbol" x="55" y="-70">S</text>
+                    {/* Q - Abajo (entre VOL y VEL, centrado) */}
+                    <text className="daedric-symbol" x="0" y="95">Q</text>
                 </g>
             </svg>
         </div>

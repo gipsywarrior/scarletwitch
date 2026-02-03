@@ -5,6 +5,13 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Daedra';
+  src: url('./assets/fonts/Daedra.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
   --color-base: #1F0506;
   --color-primario: #D81F38;

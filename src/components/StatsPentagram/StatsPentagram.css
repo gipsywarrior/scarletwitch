@@ -11,10 +11,11 @@
 }
 
 
-.guide {
-    fill: none;
-    stroke: #d81f381a;
-    stroke-width: 1;
+/* Base rounded background and stroke */
+.pentagram-base {
+    fill: var(--color-secundario);
+    stroke: var(--color-primario);
+    stroke-width: 2;
 }
 
 /* Rounded filled tips at pentacle vertices */
@@ -42,6 +43,14 @@
     fill: var(--color-primario);
 }
 
+.daedric-symbol {
+    font-family: 'Daedra', sans-serif;
+    font-size: 40px;
+    fill: var(--color-primario);
+    text-anchor: middle;
+    dominant-baseline: central;
+}
+
 
 .stat-label,
 #pm-label {
@@ -57,8 +66,4 @@
     font-size: 20px;
     font-weight: 400;
     dominant-baseline: central;
-}
-
-.pm-center {
-    /* Opcional: algún estilo para el círculo central si quieres */
 }
