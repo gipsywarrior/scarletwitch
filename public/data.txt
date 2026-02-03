@@ -1,3 +1,11 @@
+[STATS]
+VIT: 8000
+FUE: 1000
+VEL: 05
+VOL: 01
+REF: 01
+PM: 1000
+
 [Bitacora]
 >Magia Arcana
 - Afinidad magica

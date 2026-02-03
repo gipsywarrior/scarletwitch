@@ -25,10 +25,20 @@ const useDynamicData = () => {
         const sections = text.split(/\[(.*?)\]/);
         let bitacoraRaw = "";
         let historialRaw = "";
+        let statsRaw = "";
 
         for (let i = 1; i < sections.length; i += 2) {
             if (sections[i] === "Bitacora") bitacoraRaw = sections[i + 1];
             if (sections[i] === "Historial") historialRaw = sections[i + 1];
+            if (sections[i] === "STATS") statsRaw = sections[i + 1];
+        }
+
+        const atributos = {};
+        if (statsRaw) {
+            statsRaw.trim().split('\n').forEach(line => {
+                const [key, val] = line.split(':').map(s => s.trim().toLowerCase());
+                if (key && val) atributos[key] = parseInt(val) || 0;
+            });
         }
 
         const bitacora = bitacoraRaw.trim().split('\n').filter(l => l.trim()).map(line => ({
@@ -40,7 +50,8 @@ const useDynamicData = () => {
             exp: { ganada: 0, gastada: 0, actual: 0 },
             bronce: { ganada: 0, gastada: 0, actual: 0 },
             plata: { ganada: 0, gastada: 0, actual: 0 },
-            oro: { ganada: 0, gastada: 0, actual: 0 }
+            oro: { ganada: 0, gastada: 0, actual: 0 },
+            atributos
         };
 
         const historial = historialRaw.trim().split('\n').filter(l => l.trim()).map(line => {

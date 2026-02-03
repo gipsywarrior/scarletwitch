@@ -1,13 +1,12 @@
 import React, { useEffect, useRef } from 'react';
 import './StatsPentagram.css';
 
-const StatsPentagram = () => {
-    const radarRef = useRef(null);
+const StatsPentagram = ({ stats: dynamicStats }) => {
     const pentacleRef = useRef(null);
     const statsGroupRef = useRef(null);
     const pmValueRef = useRef(null);
 
-    const stats = {
+    const defaultStats = {
         vit: 3000,
         fue: 1000,
         vel: 5,
@@ -16,10 +15,12 @@ const StatsPentagram = () => {
         pm: 1000
     };
 
+    const stats = dynamicStats || defaultStats;
+
     const display = v => String(v).padStart(2, "0");
     const maxRadius = 120;
     const minRadius = 40;
-    const labelOffset = 25;
+    const labelOffset = 40; // Increased from 25
     const order = ["vit", "fue", "vel", "vol", "ref"];
     const starOrder = [0, 2, 4, 1, 3, 0];
 
@@ -50,6 +51,63 @@ const StatsPentagram = () => {
         y: Math.sin(a) * maxRadius
     }));
 
+    // Calculate inner pentagon vertices (where pentagram lines intersect)
+    // The inner pentagon radius is outer * (1/phi^2) ≈ 0.382, rotated 36°
+    const phi = (1 + Math.sqrt(5)) / 2;
+    const innerRadius = maxRadius / (phi * phi);
+    const innerAngles = angles.map(a => a + Math.PI / 5); // Rotated 36° (π/5)
+    const innerPoints = innerAngles.map(a => ({
+        x: Math.cos(a) * innerRadius,
+        y: Math.sin(a) * innerRadius
+    }));
+
+    // Rounded tip parameters
+    const tipRadius = 10; // Radius of the rounded arc at each tip
+
+    // For a regular pentagram, the tip angle is 36° (π/5)
+    const tipAngle = Math.PI / 5; // 36 degrees
+    const halfAngle = tipAngle / 2; // 18 degrees
+
+    // Distance from vertex to tangent point along each side
+    const tangentDist = tipRadius / Math.tan(halfAngle);
+
+    // For each tip, calculate the arc that "rounds" the vertex
+    const getRoundedTipPath = (i) => {
+        const outer = perimeterPoints[i];
+        const innerLeft = innerPoints[(i + 4) % 5];
+        const innerRight = innerPoints[i];
+
+        // Direction vectors from outer vertex to each inner point
+        const dirLeft = {
+            x: innerLeft.x - outer.x,
+            y: innerLeft.y - outer.y
+        };
+        const dirRight = {
+            x: innerRight.x - outer.x,
+            y: innerRight.y - outer.y
+        };
+
+        // Normalize the direction vectors
+        const lenLeft = Math.sqrt(dirLeft.x ** 2 + dirLeft.y ** 2);
+        const lenRight = Math.sqrt(dirRight.x ** 2 + dirRight.y ** 2);
+        const normLeft = { x: dirLeft.x / lenLeft, y: dirLeft.y / lenLeft };
+        const normRight = { x: dirRight.x / lenRight, y: dirRight.y / lenRight };
+
+        // Tangent points: move from outer vertex inward by tangentDist
+        const p1 = {
+            x: outer.x + normLeft.x * tangentDist,
+            y: outer.y + normLeft.y * tangentDist
+        };
+        const p2 = {
+            x: outer.x + normRight.x * tangentDist,
+            y: outer.y + normRight.y * tangentDist
+        };
+
+        // Draw the arc from p1 to p2
+        // Then lines back to the vertex to close the shape for filling
+        // sweep-flag = 1 for clockwise (bulge points outward, hollow toward center)
+        return `M ${p1.x} ${p1.y} A ${tipRadius} ${tipRadius} 0 0 1 ${p2.x} ${p2.y} L ${outer.x} ${outer.y} Z`;
+    };
 
     const getBlobPath = (pts) => {
         if (!pts.length) return "";
@@ -88,11 +146,7 @@ const StatsPentagram = () => {
                 pt.y = pt.baseY + oy;
             });
 
-
-            if (radarRef.current) {
-                radarRef.current.setAttribute("d", getBlobPath(animatedPoints));
-            }
-
+            // Removed radar animation
 
             if (pentacleRef.current) {
                 let d = `M ${perimeterPoints[starOrder[0]].x} ${perimeterPoints[starOrder[0]].y}`;
@@ -112,7 +166,7 @@ const StatsPentagram = () => {
                     children[i * 2].setAttribute("x", lx);
                     children[i * 2].setAttribute("y", ly);
                     children[i * 2 + 1].setAttribute("x", lx);
-                    children[i * 2 + 1].setAttribute("y", ly + 14);
+                    children[i * 2 + 1].setAttribute("y", ly + 20); // Spacing between label and value
                 }
             }
 
@@ -130,7 +184,14 @@ const StatsPentagram = () => {
                 <circle r="120" className="guide" />
                 <circle r="80" className="guide" />
                 <path id="pentacle" ref={pentacleRef} />
-                <path id="radar-fill" ref={radarRef} /> 
+                {/* Rounded arc tips at each pentacle vertex */}
+                {[0, 1, 2, 3, 4].map(i => (
+                    <path 
+                        key={i} 
+                        d={getRoundedTipPath(i)} 
+                        className="pentacle-tip" 
+                    />
+                ))}
                 <g id="stats" ref={statsGroupRef}>
                     {order.map((stat) => (
                         <React.Fragment key={stat}>
@@ -140,8 +201,8 @@ const StatsPentagram = () => {
                     ))}
                 </g>
                 <g className="pm-center">
-                    <text id="pm-label" x="0" y="-4">PM</text>
-                    <text id="pm-value" ref={pmValueRef} x="0" y="10">{display(stats.pm)}</text>
+                    <text id="pm-label" x="0" y="-12">PM</text>
+                    <text id="pm-value" ref={pmValueRef} x="0" y="12">{display(stats.pm)}</text>
                 </g>
             </svg>
         </div>

@@ -31,7 +31,7 @@ function FichaPrincipal({ bitacora, historial, stats }) {
         <NeonParticles count={80} />
         <Seccion1 isTransmuted={isTransmuted} />
         <Seccion2 stats={stats} isTransmuted={isTransmuted} />
-        <Seccion3 bitacora={bitacora} isTransmuted={isTransmuted} />
+        <Seccion3 bitacora={bitacora} stats={stats} isTransmuted={isTransmuted} />
         <Seccion4 historial={historial} isTransmuted={isTransmuted} />
       </div>
     </div>

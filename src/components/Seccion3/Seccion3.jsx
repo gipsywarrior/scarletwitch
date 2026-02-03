@@ -2,7 +2,7 @@ import frame3 from '../../assets/svg/rojo/Frame 3.svg'
 import StatsPentagram from '../StatsPentagram/StatsPentagram'
 import './Seccion3.css'
 
-function Seccion3({ bitacora }) {
+function Seccion3({ bitacora, stats }) {
   return (
     <div className="seccion seccion-3">
       <h2 className="titulo">BITACORA</h2>
@@ -11,7 +11,7 @@ function Seccion3({ bitacora }) {
         <img src={frame3} className="frame-3" alt="Marco Bitacora" />
         <div className="texto-bitacora">
           <div className="interior-bitacora">
-            <StatsPentagram />
+            <StatsPentagram stats={stats?.atributos} />
             
             {bitacora.map((item, index) => (
               item.isTitle ? (
