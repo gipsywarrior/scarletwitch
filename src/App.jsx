@@ -1,4 +1,5 @@
-import { HashRouter as Router, Routes, Route } from 'react-router-dom'
+import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
+import { useEffect } from 'react'
 import './App.css'
 import Seccion1 from './components/Seccion1/Seccion1'
 import Seccion2 from './components/Seccion2/Seccion2'
@@ -6,11 +7,23 @@ import Seccion3 from './components/Seccion3/Seccion3'
 import Seccion4 from './components/Seccion4/Seccion4'
 import ResumenOculto from './components/ResumenOculto/ResumenOculto'
 import useDynamicData from './hooks/useDynamicData'
+import NeonParticles from './components/NeonParticles/NeonParticles'
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
 
 function FichaPrincipal({ bitacora, historial, stats }) {
   return (
     <div className="contenedor-principal">
       <div className="ficha">
+        <NeonParticles count={25} />
         <Seccion1 />
         <Seccion2 stats={stats} />
         <Seccion3 bitacora={bitacora} />
@@ -23,8 +36,14 @@ function FichaPrincipal({ bitacora, historial, stats }) {
 function App() {
   const { bitacora, historial, stats } = useDynamicData();
 
+  useEffect(() => {
+    // Force scroll to top when data is loaded to avoid layout shift issues on reload
+    window.scrollTo(0, 0);
+  }, [stats]);
+
   return (
     <Router>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<FichaPrincipal bitacora={bitacora} historial={historial} stats={stats} />} />
         <Route path="/registro" element={<ResumenOculto stats={stats} />} />

@@ -1,0 +1,272 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0a0a0a;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.svg-box {
+    width: 720px;
+    height: 720px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+/* ==================== */
+/* CAPA 1: EFECTO NEÓN  */
+/* ==================== */
+
+.neon-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    transition: opacity 0.8s ease-out;
+    z-index: 2;
+}
+
+.svg-neon {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    animation: neonPulse 3s ease-in-out infinite;
+}
+
+@keyframes neonPulse {
+    0%, 100% {
+        filter: drop-shadow(0 0 6px #ff2a2a) drop-shadow(0 0 15px #cc0033);
+    }
+    50% {
+        filter: drop-shadow(0 0 12px #ff4040) drop-shadow(0 0 30px #aa0025);
+    }
+}
+
+.neon-layer::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    height: 70%;
+    background: radial-gradient(ellipse at center, rgba(255, 30, 60, 0.1) 0%, transparent 70%);
+    animation: ambientGlow 4s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+@keyframes ambientGlow {
+    0% {
+        opacity: 0.4;
+        transform: translate(-50%, -50%) scale(0.98);
+    }
+    100% {
+        opacity: 0.7;
+        transform: translate(-50%, -50%) scale(1.02);
+    }
+}
+
+/* ======================== */
+/* CAPA 2: SVG ESCARLATA    */
+/* ======================== */
+
+.scarlet-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.svg-scarlet {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    clip-path: circle(0% at 50% 50%);
+    filter: drop-shadow(0 0 4px #dc143c) drop-shadow(0 0 10px #8b0000);
+    transition: clip-path 0s;
+}
+
+/* ======================== */
+/* EFECTO DE TRANSICIÓN     */
+/* ======================== */
+
+.magic-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 10;
+    box-shadow:
+        0 0 0 rgba(220, 20, 60, 0),
+        inset 0 0 0 rgba(220, 20, 60, 0);
+}
+
+/* ======================== */
+/* ESTADOS HOVER           */
+/* ======================== */
+
+.svg-box:hover .neon-layer,
+.svg-box.transmuted .neon-layer {
+    opacity: 0;
+    transition: opacity 1s ease-out 0.3s;
+}
+
+.svg-box:hover .svg-scarlet,
+.svg-box.transmuted .svg-scarlet {
+    clip-path: circle(100% at 50% 50%);
+    transition: clip-path 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Anillo mágico - solo en hover inicial, no en transmuted */
+.svg-box:hover .magic-ring {
+    width: 110%;
+    height: 110%;
+    border-color: rgba(220, 20, 60, 0.7);
+    opacity: 1;
+    box-shadow:
+        0 0 25px rgba(220, 20, 60, 0.5),
+        inset 0 0 15px rgba(220, 20, 60, 0.2);
+    transition:
+        width 1s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        height 1s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        opacity 0.2s ease-out,
+        border-color 0.3s ease-out,
+        box-shadow 0.5s ease-out;
+    animation: ringFade 1.3s ease-out forwards;
+}
+
+/* Estado transmutado - sin animación de anillo */
+.svg-box.transmuted .magic-ring {
+    display: none;
+}
+
+@keyframes ringFade {
+    0% {
+        opacity: 0;
+    }
+    15% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+/* ======================== */
+/* PARTÍCULAS MÁGICAS      */
+/* ======================== */
+
+.magic-particle {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    background: radial-gradient(circle at 50% 50%,
+        #ffffff 0%,
+        #ffffff 30%,
+        #ff4040 50%,
+        #cc0033 70%,
+        transparent 100%);
+    box-shadow:
+        0 0 4px #ff3333,
+        0 0 8px #cc0033,
+        0 0 12px rgba(200, 0, 50, 0.5);
+}
+
+/* Partículas de transición - más rápidas y caóticas */
+.magic-particle.transition-burst {
+    animation-duration: 1.5s !important;
+    animation-timing-function: ease-out !important;
+}
+
+/* ======================== */
+/* RUNAS MÍSTICAS          */
+/* ======================== */
+
+.mystic-runes {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 95%;
+    height: 95%;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.svg-box:hover .mystic-runes {
+    opacity: 0.4;
+    border-color: rgba(220, 20, 60, 0.3);
+    animation: runesRotate 8s linear infinite, runesFadeIn 0.8s ease-out forwards;
+    box-shadow:
+        inset 0 0 30px rgba(220, 20, 60, 0.1),
+        0 0 20px rgba(220, 20, 60, 0.1);
+}
+
+/* Runas permanentes después de transmutación */
+.svg-box.transmuted .mystic-runes {
+    opacity: 0.25;
+    border-color: rgba(220, 20, 60, 0.2);
+    animation: runesRotate 12s linear infinite;
+    box-shadow:
+        inset 0 0 20px rgba(220, 20, 60, 0.05),
+        0 0 10px rgba(220, 20, 60, 0.05);
+}
+
+@keyframes runesRotate {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@keyframes runesFadeIn {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    100% {
+        opacity: 0.4;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
