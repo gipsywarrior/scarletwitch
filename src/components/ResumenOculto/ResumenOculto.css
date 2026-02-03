@@ -1,0 +1,70 @@
+.resumen-oculto {
+    background-color: #0d0d12;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'PangSerif', serif;
+    color: var(--color-primario);
+}
+
+.resumen-container {
+    width: 600px;
+    background-color: var(--color-base);
+    border: 2px solid var(--color-primario);
+    padding: 40px;
+    box-shadow: 0 0 30px rgba(216, 31, 56, 0.2);
+}
+
+.resumen-titulo {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 32px;
+    letter-spacing: 2px;
+}
+
+.tabla-resumen {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+
+.tabla-resumen th,
+.tabla-resumen td {
+    border: 1px solid var(--color-secundario);
+    padding: 15px;
+    text-align: left;
+}
+
+.tabla-resumen th {
+    background-color: var(--color-secundario);
+    color: var(--color-primario);
+}
+
+.actual {
+    font-weight: bold;
+    color: #fff;
+    background-color: var(--color-secundario);
+}
+
+.instrucciones {
+    text-align: center;
+    font-size: 14px;
+    color: rgba(216, 31, 56, 0.7);
+}
+
+.boton-volver {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: 1px solid var(--color-primario);
+    color: var(--color-primario);
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.boton-volver:hover {
+    background-color: var(--color-primario);
+    color: #fff;
+}

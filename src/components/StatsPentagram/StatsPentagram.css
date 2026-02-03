@@ -1,0 +1,71 @@
+.sigil-container {
+    width: 100%;
+    max-width: 360px;
+    margin: 0 auto;
+}
+
+#sigil {
+    width: 100%;
+    height: auto;
+}
+
+
+.guide {
+    fill: none;
+    stroke: #d81f381a;
+    stroke-width: 1;
+}
+
+
+#radar-fill {
+    fill: #63071583;
+    stroke: var(--color-primario);
+    stroke-width: 2;
+}
+
+
+#pentacle {
+    fill: none;
+    stroke: #d81f3866;
+    stroke-width: 3;
+    stroke-linejoin: round;
+}
+
+
+.stat-label,
+.stat-value,
+#pm-label,
+#pm-value {
+    font-family: 'PangSerif', serif;
+    text-anchor: middle;
+    pointer-events: none;
+    fill: var(--color-primario);
+}
+
+
+.stat-label,
+#pm-label {
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+
+.stat-value,
+#pm-value {
+    font-size: 17px;
+    font-weight: 400;
+}
+
+
+#pm-label {
+    dominant-baseline: alphabetic;
+}
+
+#pm-value {
+    dominant-baseline: hanging;
+}
+
+.pm-center {
+    /* Opcional: algún estilo para el círculo central si quieres */
+}

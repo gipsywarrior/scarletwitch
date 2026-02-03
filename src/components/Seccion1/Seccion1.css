@@ -1,0 +1,25 @@
+.seccion-1 {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding-top: 20px
+}
+
+.imagen-fondo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 276px;
+    height: 410px;
+    margin-top: 34px;
+    background-color: white;
+    z-index: 1;
+}
+
+.seccion-1 .ficha-svg {
+    position: relative;
+    z-index: 2;
+}

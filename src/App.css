@@ -1,0 +1,33 @@
+.contenedor-principal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 50px 0px;
+}
+
+.ficha {
+  width: 720px;
+  background-color: var(--color-base);
+  border: 1px solid var(--color-secundario);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.titulo {
+  margin: 0px;
+  font-size: 50px;
+  text-align: center;
+  width: 100%;
+}
+
+.seccion {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+img {
+  pointer-events: none;
+}

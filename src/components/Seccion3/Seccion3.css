@@ -1,0 +1,114 @@
+.seccion-3 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    padding-top: 0;
+    gap: 5px;
+}
+
+.contenedor-titulo {
+    display: flex;
+    background-color: var(--color-primario);
+    align-items: center;
+    border: 1px solid var(--color-secundario);
+    padding: 2px 0px;
+    gap: 2px;
+    width: fit-content;
+    overflow: hidden;
+    outline: 1px solid var(--color-base);
+    outline-offset: -1px;
+    margin-inline: auto;
+    margin-block: 20px 25px;
+}
+
+.caja-texto-titulo,
+.barra-lateral {
+    color: var(--color-primario);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.caja-texto-titulo {
+    background-color: var(--color-secundario);
+    padding: 9px 22px;
+    font-size: 22px;
+    border-radius: 10px;
+}
+
+.barra-lateral {
+    background-color: var(--color-base);
+    width: 8px;
+    border-radius: 100px !important;
+    height: 35px
+}
+
+
+.marco-bitacora {
+    position: relative;
+    width: 100%;
+    max-width: fit-content;
+
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.frame-3 {
+    width: 100%;
+    height: auto;
+    display: block;
+    z-index: 2;
+    position: relative;
+}
+
+.texto-bitacora {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 360px;
+    height: 490.5px;
+    color: var(--color-primario);
+    box-sizing: border-box;
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 1;
+
+    /* Mascara que solo afecta al contenido, no al scroll (derecha ~12px) */
+    mask-image:
+        linear-gradient(to bottom, transparent, black 8%, black 92%, transparent),
+        linear-gradient(to left, black, black);
+    mask-size: calc(100% - 12px) 100%, 12px 100%;
+    mask-position: left center, right center;
+    mask-repeat: no-repeat;
+
+    -webkit-mask-image:
+        linear-gradient(to bottom, transparent, black 8%, black 92%, transparent),
+        linear-gradient(to left, black, black);
+    -webkit-mask-size: calc(100% - 12px) 100%, 12px 100%;
+    -webkit-mask-position: left center, right center;
+    -webkit-mask-repeat: no-repeat;
+}
+
+
+.interior-bitacora {
+    display: flex;
+    flex-direction: column;
+    padding-inline: 40px;
+    padding-block: 30px 50px;
+    text-align: justify;
+    line-height: 20px;
+    box-sizing: border-box;
+    width: 100%;
+    font-size: 19px;
+
+    p {
+        margin: 0;
+        margin-bottom: 10px;
+    }
+}
