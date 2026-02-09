@@ -8,6 +8,7 @@ import Seccion4 from './components/Seccion4/Seccion4'
 import ResumenOculto from './components/ResumenOculto/ResumenOculto'
 import useDynamicData from './hooks/useDynamicData'
 import NeonParticles from './components/NeonParticles/NeonParticles'
+import Historia from './components/Historia/Historia'
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -52,6 +53,7 @@ function App() {
       <Routes>
         <Route path="/" element={<FichaPrincipal bitacora={bitacora} historial={historial} stats={stats} />} />
         <Route path="/registro" element={<ResumenOculto stats={stats} />} />
+        <Route path="/historias/:id" element={<Historia />} />
       </Routes>
     </Router>
   )
