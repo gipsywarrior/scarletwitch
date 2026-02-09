@@ -5,13 +5,13 @@
     --borde-historia: #171717;
     --primario-historia: #424242;
     --cuerpo-historia: #9C9C9C;
-    width: 720px;
+    width: 100%;
+    max-width: 720px;
     box-sizing: border-box;
     color: var(--cuerpo-historia);
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-sizing: border-box;
     font-family: 'PangSerif', serif;
 }
 
@@ -35,7 +35,7 @@
 .historia-content {
     position: relative;
     text-align: justify;
-    width: 720px;
+    width: 100%;
     box-sizing: border-box;
     height: auto;
     border: 1px solid var(--borde-historia);
