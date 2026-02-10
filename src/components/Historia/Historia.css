@@ -17,8 +17,7 @@
 
 .historia-container::selection {
     background-color: transparent;
-    color: white;
-    text-shadow: 0 0 2px var(--color-primario), 0 0 4px var(--color-primario), 0 0 8px var(--color-primario), 0 0 10px var(--color-primario);
+    color: rgb(230, 230, 230);
 }
 
 .encabezado-container {
